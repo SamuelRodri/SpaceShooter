@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public delegate void PlayerHit();
+    public event PlayerHit OnPlayerHit;
+
     [SerializeField] private float movementSpeed;
     [SerializeField] private float shootCoolDown;
     [SerializeField] private float hLimit;
@@ -66,6 +69,8 @@ public class Player : MonoBehaviour
         {
             lives -= 20;
             Destroy(collision.gameObject);
+
+            OnPlayerHit?.Invoke();
 
             if (lives <= 0)
                 Destroy(gameObject);
