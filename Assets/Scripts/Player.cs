@@ -16,12 +16,6 @@ public class Player : MonoBehaviour
     private bool canShoot = true;
     private float lives = 100;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Move();

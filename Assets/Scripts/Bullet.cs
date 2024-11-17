@@ -9,11 +9,6 @@ public class Bullet : MonoBehaviour
 
     private bool canShoot = true;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);    
