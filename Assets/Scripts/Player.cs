@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     public delegate void PlayerHit();
     public event PlayerHit OnPlayerHit;
 
+    public delegate void PlayerDead();
+    public event PlayerDead OnPlayerDead;
+
     [SerializeField] private float movementSpeed;
     [SerializeField] private float hLimit;
     [SerializeField] private float vLimit;
@@ -60,10 +63,14 @@ public class Player : MonoBehaviour
             lives -= 20;
             Destroy(collision.gameObject);
 
-            OnPlayerHit?.Invoke();
-
             if (lives <= 0)
-                Destroy(gameObject);
+            {
+                gameObject.SetActive(false);
+                OnPlayerDead?.Invoke();
+                return;
+            }
+
+            OnPlayerHit?.Invoke();
         }
     }
 }
