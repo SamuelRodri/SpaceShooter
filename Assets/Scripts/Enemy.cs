@@ -7,28 +7,18 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform[] shootPoints;
 
+    private ShootSystem shootSystem;
     void Start()
     {
-        StartCoroutine(Shoot());
+        shootSystem = GetComponent<ShootSystem>();
     }
 
     void Update()
     {
         transform.Translate(Vector2.left * movementSpeed * Time.deltaTime, Space.World);
-    }
 
-    private IEnumerator Shoot()
-    {
-        while (true)
-        {
-            foreach (Transform shootPoint in shootPoints)
-            {
-                Instantiate(bulletPrefab, shootPoint.position, bulletPrefab.transform.rotation);
-            }
-            yield return new WaitForSeconds(1.2f);
-        }
+        shootSystem.Shoot();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

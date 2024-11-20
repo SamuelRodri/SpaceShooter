@@ -502,6 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 762810117}
   - component: {fileID: 762810118}
+  - component: {fileID: 762810121}
   - component: {fileID: 762810120}
   - component: {fileID: 762810119}
   m_Layer: 0
@@ -542,13 +543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  shootCoolDown: 0.5
   hLimit: 8
   vLimit: 4
-  bulletPrefab: {fileID: 1088279189834616974, guid: 0afbfa3d3b5779f499f0b3173433e5dd, type: 3}
-  shootPoints:
-  - {fileID: 1038539515}
-  - {fileID: 54094710}
 --- !u!61 &762810119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -621,6 +617,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &762810121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762810116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2d4df68ba3dcb4faace03f87de451d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1779246054868101658, guid: 0afbfa3d3b5779f499f0b3173433e5dd, type: 3}
+  shootCoolDown: 0.2
+  shootPoints:
+  - {fileID: 1038539515}
+  - {fileID: 54094710}
 --- !u!1 &784332909
 GameObject:
   m_ObjectHideFlags: 0

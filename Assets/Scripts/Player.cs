@@ -9,15 +9,17 @@ public class Player : MonoBehaviour
     public event PlayerHit OnPlayerHit;
 
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float shootCoolDown;
     [SerializeField] private float hLimit;
     [SerializeField] private float vLimit;
-    [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField] private Transform[] shootPoints;
+    private ShootSystem shootSystem;
 
-    private bool canShoot = true;
     private float lives = 100;
+
+    private void Start()
+    {
+        shootSystem = GetComponent<ShootSystem>();
+    }
 
     void Update()
     {
@@ -45,22 +47,10 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKey(KeyCode.Space) && canShoot)
+        if (Input.GetKey(KeyCode.Space))
         {
-            foreach(Transform shootPoint in shootPoints)
-            {
-                Instantiate(bulletPrefab, shootPoint.position, bulletPrefab.transform.rotation);
-            }
-
-            StartCoroutine(CoolDownShoot());
+            shootSystem.Shoot();
         }
-    }
-
-    private IEnumerator CoolDownShoot()
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(shootCoolDown);
-        canShoot = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
