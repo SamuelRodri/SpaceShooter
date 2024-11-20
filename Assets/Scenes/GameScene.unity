@@ -146,13 +146,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54094709}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.436, y: -0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 762810117}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &162633236
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,8 +828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973e789cfb33fb84d9d397ff8d031b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3642382560834189783, guid: 342153f4ee60bcd47a9967e5c465efd2, type: 3}
+  smallEnemyPrefab: {fileID: 3642382560834189783, guid: 342153f4ee60bcd47a9967e5c465efd2, type: 3}
+  bigEnemiesPrefabs:
+  - {fileID: 8035773440599500601, guid: 77c6f793837e37e4cb763c7a6e275eda, type: 3}
+  - {fileID: 8035773440599500601, guid: 65cc42193ecb6334d864af3eb66e36d1, type: 3}
   rangeY: 4
+  smallEnemiesRange: 15
 --- !u!1 &752786136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 762810118}
   gameOverPanel: {fileID: 752786136}
+  gameOver: 0
 --- !u!4 &907318964
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,13 +1335,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038539514}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.436, y: 0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 762810117}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1143333030
 GameObject:
   m_ObjectHideFlags: 0

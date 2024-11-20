@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.up * movementSpeed * Time.deltaTime, Space.Self);
 
         destroyTimer += Time.deltaTime;
 

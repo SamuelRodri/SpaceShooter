@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -27,6 +28,7 @@ public class ShootSystem : MonoBehaviour
             Bullet bullet = bulletPool.Get();
             bullet.gameObject.SetActive(true);
             bullet.transform.position = shootPoints[i].position;
+            bullet.transform.eulerAngles = shootPoints[i].localEulerAngles;
         }
 
         StartCoroutine(CoolDownShoot());

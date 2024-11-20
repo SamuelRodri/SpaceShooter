@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float lifes;
 
     private ShootSystem shootSystem;
     void Start()
@@ -26,7 +27,11 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("PlayerBullet"))
         {
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+
+            lifes--;
+
+            if(lifes <= 0)
+                Destroy(gameObject);
         }
     }
 }
