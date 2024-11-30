@@ -828,6 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973e789cfb33fb84d9d397ff8d031b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToSpawn: 1
   smallEnemyPrefab: {fileID: 3642382560834189783, guid: 342153f4ee60bcd47a9967e5c465efd2, type: 3}
   bigEnemiesPrefabs:
   - {fileID: 8035773440599500601, guid: 77c6f793837e37e4cb763c7a6e275eda, type: 3}
@@ -1358,7 +1359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1143333031
 AudioSource:
   m_ObjectHideFlags: 0

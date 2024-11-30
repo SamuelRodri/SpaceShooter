@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private float timeToSpawn;
     [SerializeField] private GameObject smallEnemyPrefab;
     [SerializeField] private GameObject[] bigEnemiesPrefabs;
     [SerializeField] private float rangeY;
@@ -27,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 Vector2 instancePoint = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
                 Instantiate(smallEnemyPrefab, instancePoint, smallEnemyPrefab.transform.rotation);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(timeToSpawn);
                 currentEnemies++;
             }
             else
@@ -36,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
                 var prefab = bigEnemiesPrefabs[bigEnemyIndex];
                 Vector2 instancePoint = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
                 Instantiate(prefab, instancePoint, prefab.transform.rotation);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(timeToSpawn);
                 currentEnemies = 0;
             }
 
