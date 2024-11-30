@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private ShootSystem shootSystem;
 
     private float lives = 100;
+    public float Lives { get => lives; set => lives = value; }
 
     private void Start()
     {

@@ -20,6 +20,8 @@ public class ShootSystem : MonoBehaviour
 
     public void Shoot()
     {
+        if (bulletPool == null) return;
+
         if (!canShoot) return;
 
         for (int i = 0; i < shootPoints.Length; i++)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private float score = 0;
+
+    [SerializeField] private Image healthBar;
 
     public bool gameOver;
 
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        healthBar.fillAmount = player.Lives / 100f;
     }
 
     private void GameOver()
