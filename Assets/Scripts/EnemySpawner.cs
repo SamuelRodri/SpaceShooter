@@ -15,15 +15,24 @@ public class EnemySpawner : MonoBehaviour
     private float currentEnemies;
 
     [SerializeField] private int smallEnemySize;
+    [SerializeField] private int bigEnemySize;
     private ObjectPool smallEnemyPool;
-    private ObjectPool bigEnemyPool;
+
+    private List<ObjectPool> bigEnemiesPools = new List<ObjectPool>();
 
     void Start()
     {
         smallEnemyPool = gameObject.AddComponent<ObjectPool>();
         smallEnemyPool.InitializePool(smallEnemyPrefab, smallEnemySize);
 
-        enemiesToBoss = Random.Range(smallEnemiesRange - 5f, smallEnemiesRange + 5f);
+        for(int i = 0; i < bigEnemiesPrefabs.Length; i++)
+        {
+            var pool = gameObject.AddComponent<ObjectPool>();
+            bigEnemiesPools.Add(pool);
+            pool.InitializePool(bigEnemiesPrefabs[i], bigEnemySize);
+        }
+
+        enemiesToBoss = Mathf.Max(Random.Range(smallEnemiesRange - 5f, smallEnemiesRange + 5f), 1);
         currentEnemies = 0;
         StartCoroutine(SpawnEnemy());
     }
@@ -37,16 +46,16 @@ public class EnemySpawner : MonoBehaviour
                 Enemy smallEnemy = (Enemy)smallEnemyPool.GetPooled();
                 smallEnemy.gameObject.SetActive(true);
                 smallEnemy.transform.position = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
-                //smallEnemy.transform.eulerAngles = shootPoints[i].localEulerAngles;
                 yield return new WaitForSeconds(timeToSpawn);
                 currentEnemies++;
             }
             else
             {
                 int bigEnemyIndex = Random.Range(0, bigEnemiesPrefabs.Length);
-                var prefab = bigEnemiesPrefabs[bigEnemyIndex];
-                Vector2 instancePoint = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
-                Instantiate(prefab, instancePoint, prefab.transform.rotation);
+                var pool = bigEnemiesPools[bigEnemyIndex];
+                Enemy bigEnemy = (Enemy)pool.GetPooled();
+                bigEnemy.gameObject.SetActive(true);
+                bigEnemy.transform.position = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
                 yield return new WaitForSeconds(timeToSpawn);
                 currentEnemies = 0;
             }

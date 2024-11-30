@@ -45,7 +45,9 @@ public class ObjectPool : MonoBehaviour
     }
 
     private void ReleasePooled(PooledObject pooled)
-        => pooled.gameObject.SetActive(false);
+    {
+        pooled.gameObject.SetActive(false);
+    }
 
     private void DestroyPooled(PooledObject pooled)
         => Destroy(pooled.gameObject);

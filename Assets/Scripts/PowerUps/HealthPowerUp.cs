@@ -7,5 +7,8 @@ public class HealthPowerUp : PowerUp
     [SerializeField] private float HealthAmount;
 
     protected override void MakeEffect(Player player)
-        => player.Lives += HealthAmount;
+    {
+        player.Lives += HealthAmount;
+        DestroyPooled();
+    }
 }

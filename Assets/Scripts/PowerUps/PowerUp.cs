@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
-public abstract class PowerUp : MonoBehaviour
+public abstract class PowerUp : PooledObject
 {
     [SerializeField] private float movementSpeed;
 

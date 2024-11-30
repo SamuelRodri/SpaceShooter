@@ -30,4 +30,9 @@ public class PooledObject : MonoBehaviour
         destroyTimer = 0;
         OnRelease?.Invoke(this);
     }
+
+    protected void DestroyPooled()
+    {
+        OnRelease?.Invoke(this);
+    }
 }

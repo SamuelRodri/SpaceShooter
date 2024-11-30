@@ -36,7 +36,7 @@ public class Enemy : PooledObject
 
             if (lifes <= 0)
             {
-                Destroy(gameObject);
+                DestroyPooled();
                 FindObjectOfType<GameManager>().UpdateScore(points);
             }
         }
