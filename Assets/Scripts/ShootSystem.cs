@@ -1,18 +1,21 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ShootSystem : ObjectSpawner
+public class ShootSystem : MonoBehaviour
 {
+    [SerializeField] private int poolSize;
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float shootCoolDown;
     [SerializeField] private Transform[] shootPoints;
 
     private bool canShoot = true;
+    private ObjectPool bulletPool;
 
     private void Awake()
     {
-        poolPrefab = bulletPrefab;
-        InitializePool();    
+        bulletPool = GetComponent<ObjectPool>();
+        bulletPool.InitializePool(bulletPrefab, poolSize);
     }
 
     public void Shoot()
@@ -21,7 +24,7 @@ public class ShootSystem : ObjectSpawner
 
         for (int i = 0; i < shootPoints.Length; i++)
         {
-            Bullet bullet = (Bullet)pool.Get();
+            Bullet bullet = (Bullet)bulletPool.GetPooled();
             bullet.gameObject.SetActive(true);
             bullet.transform.position = shootPoints[i].position;
             bullet.transform.eulerAngles = shootPoints[i].localEulerAngles;

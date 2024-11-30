@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bullet : ObjectPooled
+public class Bullet : PooledObject
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 direction;

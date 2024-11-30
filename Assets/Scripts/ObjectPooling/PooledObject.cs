@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ObjectPooled : MonoBehaviour
+public class PooledObject : MonoBehaviour
 {
-    public delegate void Release(ObjectPooled pooled);
+    public delegate void Release(PooledObject pooled);
     public event Release OnRelease;
 
     [SerializeField] private float timeToDestroy;
     private float destroyTimer;
+
+    public bool isActive = false;
 
     public void Spawn()
     {
@@ -23,7 +25,8 @@ public class ObjectPooled : MonoBehaviour
             destroyTimer += Time.deltaTime;
             yield return null;
         }
-        
+
+        isActive = false;
         destroyTimer = 0;
         OnRelease?.Invoke(this);
     }
