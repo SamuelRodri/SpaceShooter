@@ -829,12 +829,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSpawn: 1
-  smallEnemyPrefab: {fileID: 3642382560834189783, guid: 342153f4ee60bcd47a9967e5c465efd2, type: 3}
+  smallEnemyPrefab: {fileID: 2715016125861094644, guid: 342153f4ee60bcd47a9967e5c465efd2, type: 3}
   bigEnemiesPrefabs:
-  - {fileID: 8035773440599500601, guid: 77c6f793837e37e4cb763c7a6e275eda, type: 3}
-  - {fileID: 8035773440599500601, guid: 65cc42193ecb6334d864af3eb66e36d1, type: 3}
+  - {fileID: 1607317842812170384, guid: 77c6f793837e37e4cb763c7a6e275eda, type: 3}
+  - {fileID: 1607317842812170384, guid: 65cc42193ecb6334d864af3eb66e36d1, type: 3}
   rangeY: 4
   smallEnemiesRange: 15
+  smallEnemySize: 10
 --- !u!1 &752786136
 GameObject:
   m_ObjectHideFlags: 0

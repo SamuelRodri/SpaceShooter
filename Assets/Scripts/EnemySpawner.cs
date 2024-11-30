@@ -6,16 +6,27 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float timeToSpawn;
-    [SerializeField] private GameObject smallEnemyPrefab;
-    [SerializeField] private GameObject[] bigEnemiesPrefabs;
+    [SerializeField] private Enemy smallEnemyPrefab;
+    [SerializeField] private Enemy[] bigEnemiesPrefabs;
     [SerializeField] private float rangeY;
 
     [SerializeField] private float smallEnemiesRange;
     private float enemiesToBoss;
     private float currentEnemies;
 
+    [SerializeField] private int smallEnemySize;
+    private ObjectPool smallEnemyPool;
+    private ObjectPool bigEnemyPool;
+
+    private void Awake()
+    {
+        smallEnemyPool = gameObject.AddComponent<ObjectPool>();
+    }
+
     void Start()
     {
+        smallEnemyPool.InitializePool(smallEnemyPrefab, smallEnemySize);
+
         enemiesToBoss = Random.Range(smallEnemiesRange - 5f, smallEnemiesRange + 5f);
         currentEnemies = 0;
         StartCoroutine(SpawnEnemy());
@@ -27,8 +38,10 @@ public class EnemySpawner : MonoBehaviour
         {
             if (currentEnemies < enemiesToBoss)
             {
-                Vector2 instancePoint = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
-                Instantiate(smallEnemyPrefab, instancePoint, smallEnemyPrefab.transform.rotation);
+                Enemy smallEnemy = (Enemy)smallEnemyPool.GetPooled();
+                smallEnemy.gameObject.SetActive(true);
+                smallEnemy.transform.position = new Vector2(transform.position.x, Random.Range(-rangeY, rangeY));
+                //smallEnemy.transform.eulerAngles = shootPoints[i].localEulerAngles;
                 yield return new WaitForSeconds(timeToSpawn);
                 currentEnemies++;
             }

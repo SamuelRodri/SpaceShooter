@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 5687381218743232606}
   - component: {fileID: 4177628325211307660}
   - component: {fileID: 4936680115266348414}
+  - component: {fileID: -6071285644783152937}
   m_Layer: 0
   m_Name: BigEnemy_2
   m_TagString: Enemy
@@ -165,8 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d649f11f14074ab47be45252aea453fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToDestroy: 15
+  isActive: 0
   movementSpeed: 2.5
-  bulletPrefab: {fileID: 1088279189834616974, guid: 23794386541af97489b8096735d2b23c, type: 3}
   lifes: 5
 --- !u!114 &5687381218743232606
 MonoBehaviour:
@@ -180,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2d4df68ba3dcb4faace03f87de451d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolSize: 10
   bulletPrefab: {fileID: 1779246054868101658, guid: 23794386541af97489b8096735d2b23c, type: 3}
   shootCoolDown: 1.95
   shootPoints:
@@ -257,6 +260,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3020344, y: 2.0514076}
   m_EdgeRadius: 0
+--- !u!114 &-6071285644783152937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035773440599500601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fde53ff0a9911744860e93d52b0c823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8749591250556706576
 GameObject:
   m_ObjectHideFlags: 0

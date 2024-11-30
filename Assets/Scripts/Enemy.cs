@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : PooledObject
 {
     [SerializeField] private float movementSpeed;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float lifes;
 
     private ShootSystem shootSystem;
+    private ObjectPool bulletPool;
+
     void Start()
     {
         shootSystem = GetComponent<ShootSystem>();
@@ -18,7 +20,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * movementSpeed * Time.deltaTime, Space.World);
-
         shootSystem.Shoot();
     }
 

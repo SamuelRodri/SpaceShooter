@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2302185113138180969}
   - component: {fileID: 2715016125861094644}
   - component: {fileID: -8510407215707885157}
+  - component: {fileID: -9008303133973329213}
   - component: {fileID: 7181662245940947360}
   - component: {fileID: 4420667332232438077}
   m_Layer: 0
@@ -50,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d649f11f14074ab47be45252aea453fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToDestroy: 15
+  isActive: 0
   movementSpeed: 2
-  bulletPrefab: {fileID: 1088279189834616974, guid: 23794386541af97489b8096735d2b23c, type: 3}
   lifes: 1
 --- !u!114 &-8510407215707885157
 MonoBehaviour:
@@ -65,11 +67,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2d4df68ba3dcb4faace03f87de451d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolSize: 10
   bulletPrefab: {fileID: 1779246054868101658, guid: 23794386541af97489b8096735d2b23c, type: 3}
-  shootCoolDown: 1.75
+  shootCoolDown: 1.9
   shootPoints:
   - {fileID: 6880377442744348541}
   - {fileID: 2066802246181168462}
+--- !u!114 &-9008303133973329213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642382560834189783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fde53ff0a9911744860e93d52b0c823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &7181662245940947360
 Rigidbody2D:
   serializedVersion: 4

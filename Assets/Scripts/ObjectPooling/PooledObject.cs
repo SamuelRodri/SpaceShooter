@@ -11,7 +11,7 @@ public class PooledObject : MonoBehaviour
     [SerializeField] private float timeToDestroy;
     private float destroyTimer;
 
-    public bool isActive = false;
+    [HideInInspector] public bool isActive = false;
 
     public void Spawn()
     {
