@@ -18,13 +18,9 @@ public class EnemySpawner : MonoBehaviour
     private ObjectPool smallEnemyPool;
     private ObjectPool bigEnemyPool;
 
-    private void Awake()
-    {
-        smallEnemyPool = gameObject.AddComponent<ObjectPool>();
-    }
-
     void Start()
     {
+        smallEnemyPool = gameObject.AddComponent<ObjectPool>();
         smallEnemyPool.InitializePool(smallEnemyPrefab, smallEnemySize);
 
         enemiesToBoss = Random.Range(smallEnemiesRange - 5f, smallEnemiesRange + 5f);

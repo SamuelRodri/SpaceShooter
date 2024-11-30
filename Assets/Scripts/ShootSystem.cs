@@ -12,13 +12,9 @@ public class ShootSystem : MonoBehaviour
     private bool canShoot = true;
     private ObjectPool bulletPool;
 
-    private void Awake()
-    {
-        bulletPool = GetComponent<ObjectPool>();
-    }
-
     private void Start()
     {
+        bulletPool = GetComponent<ObjectPool>();
         bulletPool.InitializePool(bulletPrefab, poolSize);
     }
 

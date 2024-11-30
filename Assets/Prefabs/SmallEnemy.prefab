@@ -55,6 +55,7 @@ MonoBehaviour:
   isActive: 0
   movementSpeed: 2
   lifes: 1
+  points: 25
 --- !u!114 &-8510407215707885157
 MonoBehaviour:
   m_ObjectHideFlags: 0

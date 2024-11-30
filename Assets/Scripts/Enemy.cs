@@ -12,6 +12,9 @@ public class Enemy : PooledObject
     private ShootSystem shootSystem;
     private ObjectPool bulletPool;
 
+    [SerializeField] private int points;
+    public int Points { get => points; set => points = value; }
+
     void Start()
     {
         shootSystem = GetComponent<ShootSystem>();
@@ -31,8 +34,11 @@ public class Enemy : PooledObject
 
             lifes--;
 
-            if(lifes <= 0)
+            if (lifes <= 0)
+            {
                 Destroy(gameObject);
+                FindObjectOfType<GameManager>().UpdateScore(points);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private GameObject gameOverPanel;
+
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private float score = 0;
 
     public bool gameOver;
 
@@ -24,6 +28,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
     private void GameOver()
     {
         gameOverPanel.SetActive(true);
@@ -34,5 +39,11 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.25f);
         gameOver = true;
+    }
+
+    public void UpdateScore(int points)
+    {
+        score += points;
+        scoreText.text = $"Score: {score}";
     }
 }
