@@ -30,8 +30,6 @@ public class Enemy : PooledObject
     {
         if (collision.CompareTag("PlayerBullet"))
         {
-            Destroy(collision.gameObject);
-
             lifes--;
 
             if (lifes <= 0)

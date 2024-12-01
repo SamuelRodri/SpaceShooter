@@ -62,7 +62,6 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("EnemyBullet") || collision.CompareTag("Enemy"))
         {
             lives -= 20;
-            Destroy(collision.gameObject);
 
             if (lives <= 0)
             {

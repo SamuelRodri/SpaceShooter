@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSize: 9
-  bulletPrefab: {fileID: 1779246054868101658, guid: 23794386541af97489b8096735d2b23c, type: 3}
+  bulletPrefab: {fileID: -1939217925623704765, guid: 23794386541af97489b8096735d2b23c, type: 3}
   shootCoolDown: 2.25
   shootPoints:
   - {fileID: 6371651422566784741}
