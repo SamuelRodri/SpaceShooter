@@ -18,11 +18,11 @@ public class ShootSystem : MonoBehaviour
         bulletPool.InitializePool(bulletPrefab, poolSize);
     }
 
-    public void Shoot()
+    public bool Shoot()
     {
-        if (bulletPool == null) return;
+        if (bulletPool == null) return false;
 
-        if (!canShoot) return;
+        if (!canShoot) return false;
 
         for (int i = 0; i < shootPoints.Length; i++)
         {
@@ -35,6 +35,8 @@ public class ShootSystem : MonoBehaviour
         }
 
         StartCoroutine(CoolDownShoot());
+
+        return true;
     }
 
     private IEnumerator CoolDownShoot()

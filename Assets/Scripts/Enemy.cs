@@ -7,10 +7,11 @@ using UnityEngine;
 public class Enemy : PooledObject
 {
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float lifes;
+    [SerializeField] private float lives;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private ShootSystem shootSystem;
-    private ObjectPool bulletPool;
+    private ShipAudio audioSystem;
 
     [SerializeField] private int points;
     public int Points { get => points; set => points = value; }
@@ -18,25 +19,37 @@ public class Enemy : PooledObject
     void Start()
     {
         shootSystem = GetComponent<ShootSystem>();
+        audioSystem = GetComponent<ShipAudio>();
     }
 
     void Update()
     {
         transform.Translate(Vector2.left * movementSpeed * Time.deltaTime, Space.World);
-        shootSystem.Shoot();
+        if (shootSystem.Shoot()) audioSystem.PlayShootAudio();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (lives <= 0) return;
+
         if (collision.CompareTag("PlayerBullet"))
         {
-            lifes--;
+            lives--;
 
-            if (lifes <= 0)
+            if (lives <= 0)
             {
-                DestroyPooled();
-                FindObjectOfType<GameManager>().UpdateScore(points);
+                audioSystem.PlayDestroyAudio(OnFinishDestroyAudio);
+                spriteRenderer.enabled = false;
+                return;
             }
+
+            audioSystem.PlayHitAudio();
         }
+    }
+
+    private void OnFinishDestroyAudio()
+    {
+        DestroyPooled();
+        FindObjectOfType<GameManager>().UpdateScore(points);
     }
 }

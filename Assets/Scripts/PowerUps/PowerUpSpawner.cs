@@ -32,7 +32,7 @@ public class PowerUpSpawner : MonoBehaviour
 
             PowerUp powerUp;
 
-            if(Random.Range(0, 10) > 7)
+            if(Random.Range(0, 10) > 5)
             {
                 powerUp = (PowerUp)healthPowerUpPool.GetPooled();
             }

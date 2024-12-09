@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float vLimit;
 
     private ShootSystem shootSystem;
+    private ShipAudio audioSystem;
 
     private float lives = 100;
     public float Lives { get => lives; set => lives = value; }
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         shootSystem = GetComponent<ShootSystem>();
+        audioSystem = GetComponent<ShipAudio>();
     }
 
     void Update()
@@ -53,24 +55,33 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            shootSystem.Shoot();
+            if (shootSystem.Shoot()) audioSystem.PlayShootAudio();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (lives <= 0) return;
+
         if (collision.CompareTag("EnemyBullet") || collision.CompareTag("Enemy"))
         {
+            audioSystem.PlayHitAudio();
+
             lives -= 20;
 
             if (lives <= 0)
             {
-                gameObject.SetActive(false);
-                OnPlayerDead?.Invoke();
+                audioSystem.PlayDestroyAudio(OnSoundDestroyFinished);
                 return;
             }
 
             OnPlayerHit?.Invoke();
         }
+    }
+
+    private void OnSoundDestroyFinished()
+    {
+        gameObject.SetActive(false);
+        OnPlayerDead?.Invoke();
     }
 }
