@@ -18,7 +18,17 @@ public class GameManager : MonoBehaviour
 
     public bool gameOver;
 
-    // Start is called before the first frame update
+    [SerializeField] private AudioClip gameMusic;
+    private AudioSource audioSource;
+    private void Awake()
+    {
+        audioSource = GameObject.FindGameObjectsWithTag("AudioManager")[0].GetComponent<AudioSource>();
+        audioSource.clip = gameMusic;
+        audioSource.priority = 1;
+        audioSource.volume = 0.08f;
+        audioSource.Play();
+    }
+
     void Start()
     {
         player.OnPlayerDead += GameOver;

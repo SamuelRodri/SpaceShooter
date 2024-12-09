@@ -2289,6 +2289,7 @@ MonoBehaviour:
   score: 0
   healthBar: {fileID: 599844717}
   gameOver: 0
+  gameMusic: {fileID: 8300000, guid: fc77f822f7723b2419200a5fba82b00d, type: 3}
 --- !u!4 &907318964
 Transform:
   m_ObjectHideFlags: 0

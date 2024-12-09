@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - PowerUp
   - PlayerShield
+  - AudioManager
   layers:
   - Default
   - TransparentFX
