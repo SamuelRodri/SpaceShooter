@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey && gameOver)
+        if (Input.GetKeyDown(KeyCode.R) && gameOver)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DelayGameOver()
     {
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1.1f);
         gameOver = true;
     }
 
@@ -60,5 +60,11 @@ public class GameManager : MonoBehaviour
     {
         score += points;
         scoreText.text = $"Score: {score}";
+    }
+
+    public void GoToMenu()
+    {
+        Destroy(GameObject.FindGameObjectsWithTag("AudioManager")[0]);
+        SceneManager.LoadScene("MenuScene");
     }
 }
