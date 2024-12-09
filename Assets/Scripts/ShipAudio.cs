@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ShipAudio : MonoBehaviour
 {
     [SerializeField] private AudioClip _shootAudio;

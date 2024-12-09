@@ -8,6 +8,5 @@ public class ShieldPowerUp : PowerUp
     {
         var shield = FindObjectOfType<Shield>();
         shield.ActiveShield();
-        DestroyPooled();
     }
 }

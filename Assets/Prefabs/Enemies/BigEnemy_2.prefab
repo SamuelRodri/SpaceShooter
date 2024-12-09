@@ -171,7 +171,7 @@ MonoBehaviour:
   timeToDestroy: 15
   isActive: 0
   movementSpeed: 2.5
-  lifes: 5
+  lives: 5
   spriteRenderer: {fileID: 1940819745177583797}
   points: 50
 --- !u!114 &5687381218743232606

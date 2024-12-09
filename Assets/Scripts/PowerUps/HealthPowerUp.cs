@@ -9,6 +9,5 @@ public class HealthPowerUp : PowerUp
     protected override void MakeEffect(Player player)
     {
         player.Lives += HealthAmount;
-        DestroyPooled();
     }
 }

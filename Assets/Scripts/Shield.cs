@@ -14,6 +14,7 @@ public class Shield : MonoBehaviour
 
     public void ActiveShield()
     {
+        if (player.Lives <= 0) return;
         GetComponent<CircleCollider2D>().enabled = true;
         shield.gameObject.SetActive(true);
     }

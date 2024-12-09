@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,14 @@ using UnityEngine;
 public abstract class PowerUp : PooledObject
 {
     [SerializeField] private float movementSpeed;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private PowerUpAudio audioSystem;
+
+    private void Start()
+    {
+        audioSystem = GetComponent<PowerUpAudio>();
+    }
 
     void Update()
     {
@@ -16,9 +25,16 @@ public abstract class PowerUp : PooledObject
     {
         if (collision.CompareTag("Player"))
         {
+            audioSystem.PlayTouchedSound(OnFinishTouchedAudio);
+            spriteRenderer.enabled = false;
             MakeEffect(collision.GetComponent<Player>());
         }
     }
 
     protected abstract void MakeEffect(Player player);
+
+    private void OnFinishTouchedAudio()
+    {
+        DestroyPooled();
+    }
 }
