@@ -39,6 +39,7 @@ public class Enemy : PooledObject
             if (lives <= 0)
             {
                 audioSystem.PlayDestroyAudio(OnFinishDestroyAudio);
+                FindObjectOfType<GameManager>().UpdateScore(points);
                 spriteRenderer.enabled = false;
                 return;
             }
@@ -50,6 +51,5 @@ public class Enemy : PooledObject
     private void OnFinishDestroyAudio()
     {
         DestroyPooled();
-        FindObjectOfType<GameManager>().UpdateScore(points);
     }
 }
